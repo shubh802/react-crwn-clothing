@@ -24,17 +24,12 @@ class App extends React.Component {
         //  It gives the snapshot of the document
         userRef.onSnapshot(snapShot => {
           // This gives the JSON data from the snapShot
-          this.setState(
-            {
-              currentUser: {
-                id: snapShot.id,
-                ...snapShot.data()
-              }
-            }, // There are chances that it is not complete so we use the callback for the logging the state 
-            () => {
-              console.log(this.state);
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
             }
-          );
+          });
         });
       }
       this.setState({ currentUser: userAuth });
